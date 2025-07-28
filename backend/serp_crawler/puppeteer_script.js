@@ -1,10 +1,10 @@
-// puppeteer_script.js
 const puppeteer = require('puppeteer');
 
 (async () => {
   const browser = await puppeteer.launch({ headless: "new" });
   const page = await browser.newPage();
-  await page.goto('https://www.google.com/search?q=example+query');
+  const query = process.argv[2] || 'chatgpt';
+  await page.goto(`https://www.google.com/search?q=${encodeURIComponent(query)}`);
 
   const data = await page.evaluate(() => {
     const elements = [];
@@ -13,15 +13,10 @@ const puppeteer = require('puppeteer');
       elements.push({
         tag: el.tagName,
         html: el.innerHTML,
-        position: {
-          top: rect.top,
-          left: rect.left,
-          height: rect.height,
-          width: rect.width
-        }
+        position: { top: rect.top, left: rect.left, width: rect.width, height: rect.height }
       });
     });
-    return elements;
+    return { elements, aio_present: !!document.querySelector('div[data-attrid]') };
   });
 
   console.log(JSON.stringify(data));

@@ -10,3 +10,6 @@ google-api-python-client
 oauth2client
 praw
 apscheduler
+scikit-learn
+xgboost
+joblib

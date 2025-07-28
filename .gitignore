@@ -1,0 +1,15 @@
+# Python artifacts
+__pycache__/
+*.py[cod]
+*.env
+
+# Node
+backend/serp_crawler/node_modules/
+
+# Credentials & secrets
+backend/analytics/credentials.json
+
+# Docker
+**/docker-compose.override.yml
+
+# Anything else you don’t want in Git

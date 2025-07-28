@@ -13,3 +13,20 @@ apscheduler
 scikit-learn
 xgboost
 joblib
+qdrant-client
+numpy
+networkx
+spacy
+scikit-learn
+openai                # for compatibility with Groq’s API shape
+jinja2                # for prompt templating
+streamlit             # optional, for a quick editorial UI
+mabwiser            # or your favorite MAB library
+python-dotenv         # load .env
+slack_sdk
+sendgrid
+google-api-python-client   # for YouTube API
+praw  
+fastapi                   # you have already
+pydantic
+html_sanitizer   

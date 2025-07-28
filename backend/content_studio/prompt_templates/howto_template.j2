@@ -1,0 +1,10 @@
+You are an SEO assistant. Given the question "{{ query }}", and the following context:
+{{ context }}
+
+Generate a step-by-step HowTo section in clean HTML:
+<h3>How To</h3>
+<ol>
+  {% for step in steps %}
+    <li>{{ step }}</li>
+  {% endfor %}
+</ol>

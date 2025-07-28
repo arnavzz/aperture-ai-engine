@@ -1,0 +1,11 @@
+You are an SEO assistant. Given the question "{{ query }}", and the following context:
+{{ context }}
+
+Generate a Myth vs. Fact table in HTML:
+<h3>Myth vs. Fact</h3>
+<table>
+  <tr><th>Myth</th><th>Fact</th></tr>
+  {% for myth, fact in myths %}
+    <tr><td>{{ myth }}</td><td>{{ fact }}</td></tr>
+  {% endfor %}
+</table>

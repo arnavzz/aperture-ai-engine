@@ -4,18 +4,39 @@ services:
     image: mongo:6.0
     ports:
       - "27017:27017"
+
   postgres:
     image: postgres:14
     environment:
       POSTGRES_PASSWORD: password
     ports:
       - "5432:5432"
+
+  qdrant:
+    image: qdrant/qdrant
+    ports:
+      - "6333:6333"
+
   backend:
     build: .
     volumes:
-      - ./backend:/app
-    working_dir: /app
-    command: uvicorn main:app --host 0.0.0.0 --port 8000
+      - ./backend:/app/backend
+      - ./.env:/app/.env:ro
+    working_dir: /app/backend
+    command: uvicorn main:app --host 0.0.0.0 --port 8000 --reload
     depends_on:
       - mongo
       - postgres
+      - qdrant
+
+  streamlit:
+    image: python:3.10-slim
+    volumes:
+      - ./:/app
+    working_dir: /app
+    command: bash -c "pip install -r requirements.txt && streamlit run streamlit_app.py --server.port 8501 --server.address 0.0.0.0"
+    ports:
+      - "8501:8501"
+    depends_on:
+      - backend
+

@@ -20,10 +20,16 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
 
+    // tsconfig.json
+
+  
+
+
+
     /* Path mapping */
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["*"]
     }
   },
   "include": ["src"],

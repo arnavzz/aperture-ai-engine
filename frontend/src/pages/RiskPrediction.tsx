@@ -4,15 +4,6 @@ import { Shield, AlertTriangle, CheckCircle, Loader2, TrendingUp } from 'lucide-
 import toast from 'react-hot-toast'
 import { riskPredictionAPI, PredictRequest, PredictResponse } from '../services/api'
 
-interface FormData {
-  aio_length: number
-  organic_rank: number
-  snippet_richness: number
-  device_type: string
-  query_intent: string
-  brand_flag: boolean
-}
-
 const deviceTypeOptions = [
   { value: 'desktop', label: 'Desktop' },
   { value: 'mobile', label: 'Mobile' },
@@ -30,7 +21,7 @@ export default function RiskPrediction() {
   const [isLoading, setIsLoading] = useState(false)
   const [prediction, setPrediction] = useState<PredictResponse | null>(null)
 
-  const { register, handleSubmit, formState: { errors } } = useForm<FormData>({
+  const { register, handleSubmit, formState: { errors } } = useForm<PredictRequest>({
     defaultValues: {
       aio_length: 0,
       organic_rank: 1,
@@ -41,7 +32,7 @@ export default function RiskPrediction() {
     }
   })
 
-  const onSubmit = async (data: FormData) => {
+  const onSubmit = async (data: PredictRequest) => {
     setIsLoading(true)
     try {
       const response = await riskPredictionAPI.predict(data)

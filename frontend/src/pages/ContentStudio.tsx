@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { Sparkles, Copy, Check, Loader2 } from 'lucide-react'
 import toast from 'react-hot-toast'
-import { contentStudioAPI, AugmentRequest } from '../services/api'
+import { contentStudioAPI } from '../services/api'
 
 interface FormData {
   page_url: string

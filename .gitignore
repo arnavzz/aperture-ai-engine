@@ -154,6 +154,16 @@ qdrant_data/
 # Analytics data
 analytics_data/
 
+# Credentials and sensitive files
+backend/analytics/credentials.json
+*.json
+!package.json
+!package-lock.json
+!tsconfig.json
+!tailwind.config.js
+!postcss.config.js
+!vite.config.ts
+
 # Jupyter Notebook
 .ipynb_checkpoints
 
